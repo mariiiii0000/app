@@ -1,3 +1,7 @@
+// Red
+// Не принято использовать в названии переменных, классов и методов нижние подчеркивания
+// Какой-то imposter из питона получается)
+// YearTransaction
 public class Transaction_year {
     int month;
     int amount;

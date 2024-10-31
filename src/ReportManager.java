@@ -1,6 +1,12 @@
 import java.util.ArrayList;
 
 public class ReportManager {
+    // Yellow
+    // Лучше создать константу (неизменяемую переменную для хранения количества месяцев),
+    // чтобы в случае увеличения количества отчетов, меньше было кода изменять
+    // Например, так:
+    // final int monthCount = 3;
+    // MonthReport[] monthReports = new MonthReport[monthCount];
     MonthReport[] monthReports = new MonthReport[3];
     YearReport yearReport = new YearReport();
     FileReader fileReader = new FileReader();
@@ -9,14 +15,21 @@ public class ReportManager {
             monthReports[i] = new MonthReport();
         }
     }
+    // Yellow
+    // Не очень удачное название метода
+    // Я бы назвал isReportsEqual()
     boolean compareSums(){
         boolean isEqual = true;
         int monthError = -1;
         for (int i = 0; i < monthReports.length; i++){
+            // Yellow
+            // Повторяющийся код в двух условных конструкциях
+            // Можно поставить логический оператор ИЛИ, совместив два условия в одно
+            // + тк условие очень громоздкое получается, лучше сначала запихнуть значение его в логическую переменную
+            // boolean isSumsEqual = ... || ...
             if (monthReports[i].sumReportsMonth(true) != yearReport.sumReportsYear(i+1, true)){
                 isEqual = false;
                 monthError = i;
-
                 break;
             }
             if (monthReports[i].sumReportsMonth(false) != yearReport.sumReportsYear(i+1, false)){
@@ -38,6 +51,7 @@ public class ReportManager {
         readReportsMonth(2, "m.202103.csv");
 
     }
+
     void printMonthReports(){
         int month = 1;
         for (MonthReport report : monthReports) {
@@ -74,12 +88,20 @@ public class ReportManager {
         boolean monthsLoaded = true;
         for (MonthReport monthReport: monthReports){
             if (monthReport.transactions_month.isEmpty()){
+                // Red
+                // Если мы встретили пустой месяц, мы опускаем флаг
+                // В таком случае необязательно идти дальше
+                // и мы можем оборвать цикл с помощью break
                 monthsLoaded = false;
             }
         }
         return  monthsLoaded;
     }
 
+    // Red
+    // Лучше не копировать логику двух предыдущих месяцев
+    // А просто возвращать из совмещенное значение
+    // return areLoadedYear() && areLoadedMonth();
     boolean areLoadedAll(){
         boolean monthsLoaded = true;
         for (MonthReport monthReport: monthReports){
@@ -93,7 +115,10 @@ public class ReportManager {
     void printYearReport(){
         yearReport.printReportsYear();
     }
-
+    // Yellow
+    // Методы, которые связаны друг с другом желательно группировать в классе
+    // Например, этот метод схож с методом по считыванию месячных отчетов
+    // Логично поставить их недалеко друг от друга
     void readReportYear(){
         ArrayList<String> lines = fileReader.readFileContents("y.2021.csv");
         for (int i = 1;i < lines.size();i++){

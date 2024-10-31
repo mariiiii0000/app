@@ -1,7 +1,12 @@
 
 import java.util.Scanner;
 
-
+// Green
+// Отличное разделение обязанности между классами
+// Выполняются принципы SOLID и разделение обязанностей
+// Один класс - одна сущность
+// Один метод - одна задача
+// Молодец!
 public class Main {
     public static void main(String[] args) {
 
