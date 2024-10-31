@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 
 public class YearReport {
+    // Yellow
+    // Необязательно писать тип данных в дженериках, когда создаем коллекцию
     ArrayList<Transaction_year> transactions_year = new ArrayList<Transaction_year>();
 
     void printReportsYear(){
