@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class MonthReport {
-    // Yellow
+    // Yellow+
     // Необязательно писать тип данных в дженериках, когда создаем коллекцию
-    ArrayList<Transaction> transactions_month = new ArrayList<Transaction>();
+    ArrayList<Transaction> transactions_month = new ArrayList<>();
 
     void printReportsMonth(){
         for (Transaction transaction : transactions_month) {

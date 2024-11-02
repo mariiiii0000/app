@@ -1,13 +1,13 @@
-// Red
+// Red++
 // Не принято использовать в названии переменных, классов и методов нижние подчеркивания
-// Какой-то imposter из питона получается)
+// Какой-то imposter из питона получается)(((((((((((((((((((((((
 // YearTransaction
-public class Transaction_year {
+public class TransactionYear {
     int month;
     int amount;
     boolean isExpense;
 
-    Transaction_year(int month, int amount, boolean isExpense){
+    TransactionYear(int month, int amount, boolean isExpense){
         this.month = month;
         this.amount = amount;
         this.isExpense = isExpense;
